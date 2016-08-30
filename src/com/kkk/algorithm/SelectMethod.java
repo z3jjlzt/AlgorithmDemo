@@ -8,7 +8,7 @@ public class SelectMethod {
     public SelectMethod(int[] arr) {
         int len = arr.length;
 
-        for (int k = 1; k < len; k++) {
+        for (int k = 0; k < len-1; k++) {
             int index = k;//每次从下表k开始循环
             for (int j = k + 1; j < len; j++) {
                 if (arr[j] < arr[index]) {
@@ -30,7 +30,7 @@ public class SelectMethod {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, 4, 66, 2, 444, 34, 67, 78, 23, 45};
+        int[] arr = {9,1, 4, 66, 2, 444, 34, 67, 78, 23, 45};
         new SelectMethod(arr);
     }
 

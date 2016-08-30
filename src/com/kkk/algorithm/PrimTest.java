@@ -3,7 +3,7 @@ package com.kkk.algorithm;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * 最小生成树普里姆算法
