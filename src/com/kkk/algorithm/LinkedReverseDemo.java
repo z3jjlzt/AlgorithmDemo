@@ -15,7 +15,7 @@ class ListNode {
 
     @Override
     public String toString() {
-        return "com.kkk.algorithm.ListNode{" +
+        return "Node{" +
                 "val=" + val +
                 ", next=" + next +
                 '}';
@@ -33,6 +33,8 @@ public class LinkedReverseDemo {
      * @return
      */
     public ListNode ReverseList(ListNode head) {
+        if(head == null ||head.next == null)
+            return head;
         ListNode p = head;
         ListNode q = p.next;
         p.next = null;
@@ -46,6 +48,34 @@ public class LinkedReverseDemo {
         return p;
     }
 
+    /**
+     * 插入法，每次在首个元素后面插入下一个元素，最后再把第一个
+     * 元素插入最后。
+     * @param head
+     * @return
+     */
+    public ListNode ReverseByInsert(ListNode head){
+        if(head == null ||head.next == null)
+            return head;
+        int top = head.val;
+        ListNode tar = new ListNode(head.val);
+        head = head.next;
+        ListNode tmp;
+        while(head != null){
+            tmp = new ListNode(head.val);
+            tmp.next = tar.next;
+            tar.next = tmp;
+            head = head.next;
+        }
+        tar = tar.next;
+        tmp = tar;
+        while(tmp.next != null){
+            tmp = tmp.next;
+        }
+        tmp.next = new ListNode(top);
+        return tar;
+    }
+
     public static void main(String[] args) {
         ListNode l = new ListNode(1);
         ListNode tmp = l;
@@ -53,6 +83,6 @@ public class LinkedReverseDemo {
             tmp.next = new ListNode(i);
             tmp = tmp.next;
         }
-        System.out.println(new LinkedReverseDemo().ReverseList(l));
+        System.out.println(new LinkedReverseDemo().ReverseByInsert(l));
     }
 }
